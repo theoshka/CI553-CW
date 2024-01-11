@@ -25,6 +25,8 @@ public class CustomerClient
     RemoteMiddleFactory mrf = new RemoteMiddleFactory();
     mrf.setStockRInfo( stockURL );
     displayGUI(mrf);                          // Create GUI
+    
+    
   }
    
   private static void displayGUI(MiddleFactory mf)

@@ -39,4 +39,11 @@ public interface StockReader
    */
   
   ImageIcon getImage(String pNum) throws StockException;
+<<<<<<< Updated upstream
+=======
+  
+  
+  //Returns a map of the product number and product description throws stockexception if issue
+  Map<String, String> getStockMap() throws StockException;
+>>>>>>> Stashed changes
 }

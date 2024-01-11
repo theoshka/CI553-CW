@@ -1,5 +1,7 @@
 package clients.customer;
 
+import java.util.Map;
+
 /**
  * The Customer Controller
  * @author M A Smith (c) June 2014
@@ -20,6 +22,10 @@ public class CustomerController
     this.view  = view;
     this.model = model;
   }
+  
+  public Map<String, String> doSearch( String search ) {
+	  return model.doSearch(search);
+  }
 
   /**
    * Check interaction from view
@@ -27,7 +33,11 @@ public class CustomerController
    */
   public void doCheck( String pn )
   {
+<<<<<<< Updated upstream
     model.doCheck(pn);
+=======
+		model.doCheck(search);	    
+>>>>>>> Stashed changes
   }
 
   /**

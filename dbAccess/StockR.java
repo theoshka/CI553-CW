@@ -107,6 +107,36 @@ public class StockR implements StockReader
       throw new StockException( "SQL exists: " + e.getMessage() );
     }
   }
+<<<<<<< Updated upstream
+=======
+  
+  /**
+   * Returns the size of the ProductTable field in the database
+   * @param none
+   * @return Size of ProductTable in an integer
+   * @throws StockException
+   */
+  public synchronized int getDatabaseSize()
+  		 throws StockException
+  {	  
+	  int databaseSize = 0;
+	  try 
+	  {
+		  ResultSet size = getStatementObject().executeQuery(
+				  "select count(description) from ProductTable");
+		  
+		  if (size.next()) {
+			  databaseSize =  size.getInt(1);
+		  }
+		  
+		  size.close();
+		  return databaseSize;
+	  } catch(SQLException e)
+	  {
+		  throw new StockException( "SQL getDataBaseSize: " + e.getMessage());
+	  }
+  }
+>>>>>>> Stashed changes
 
   /**
    * Returns details about the product in the stock list.
@@ -171,5 +201,30 @@ public class StockR implements StockReader
     //DEBUG.trace( "DB StockR: getImage -> %s", filename );
     return new ImageIcon( filename );
   }
+<<<<<<< Updated upstream
 
+=======
+  
+  public synchronized Map<String, String> getStockMap() // returns a map of the product names to product numbers
+  {
+	  Map<String, String> stockMap = new HashMap<>(); // Maps productNumber to Description
+	  Product pr; // to store the fetched information
+	  	  
+	  try 
+	  {  
+		  for (int i = 1; i <= 7; i++)  // looping over the database
+		  {
+			  pr = getDetails("000" + Integer.toString(i)); // assigning the product object
+			  stockMap.put(pr.getDescription().toLowerCase(), "000" + Integer.toString(i)); // putting the description of the product to the number
+		  }
+		  
+		  return stockMap;	  
+		  
+	  } catch (StockException e) {
+		  DEBUG.error("getStockMap()  :  " + e.getMessage());
+	  }
+	  
+	  return null;
+  }
+>>>>>>> Stashed changes
 }

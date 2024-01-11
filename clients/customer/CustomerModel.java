@@ -9,7 +9,12 @@ import middle.StockException;
 import middle.StockReader;
 
 import javax.swing.*;
+<<<<<<< Updated upstream
 import java.util.Observable;
+=======
+
+import java.util.*;
+>>>>>>> Stashed changes
 
 /**
  * Implements the Model of the customer client
@@ -53,6 +58,33 @@ public class CustomerModel extends Observable
     return theBasket;
   }
 
+<<<<<<< Updated upstream
+=======
+  public Map<String, String> doSearch(String search) {
+	  theBasket.clear(); // empty basket first
+	  Map<String, String> filteredStockMap = new HashMap<>(); // Map to be returned
+	  
+	  try   // try catch ofc to deal with exceptions
+	  {
+		  Map<String, String> stockMap = theStock.getStockMap(); // using method written in StockR
+		  
+		  stockMap.forEach((key, value) -> { // for each key and value if the key contains text from the search filter
+			    if (key.contains(search)) {  // then it adds the key and value to the map to be returned
+			        filteredStockMap.put(key, value);
+			    }
+			});
+		  
+		  return filteredStockMap;
+
+	  } catch (Exception e) 
+	  {
+		  DEBUG.error("CustomerModel.doSearch() ", e.getMessage());
+	  }
+	  
+	  return null;
+  }
+  
+>>>>>>> Stashed changes
   /**
    * Check if the product is in Stock
    * @param productNum The product number
